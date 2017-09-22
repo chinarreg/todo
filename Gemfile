@@ -39,6 +39,10 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'simple_form'
 gem 'pg', '~> 0.18'
 gem  'bootstrap-datepicker-rails'
+gem 'devise'
+gem 'cancan'
+gem 'mailcatcher'
+gem 'html2haml'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
