@@ -1,3 +1,4 @@
-#task-list.container
-  = render partial: 'tasks/task_list', locals: {tasks: @tasks}
+- unless controller.controller_name == "projects"
+  #task-list.container
+    = render partial: 'tasks/task_list', locals: {tasks: @tasks}
 #modal.modal.fade

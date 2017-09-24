@@ -2,8 +2,13 @@
   %h1 New Task
 = simple_form_for task, class: 'clearfix', remote: true do |f|
   .modal-body
-    = f.input :title
-    = f.input :note
-    = f.input :completed, as: :string, input_html: {class: 'datepicker'}
+    - if current_user.admin?
+      = f.input :title
+      = f.input :note
+      = f.input :project_id, collection: Project.all.pluck(:title, :id)
+      = f.input :user_id, collection: User.all.pluck(:email, :id)
+    - else
+      = f.input :status, collection: Task.statuses.keys.map{|s| [s.titleize, s]}
+    // = f.input :completed, as: :string, input_html: {class: 'datepicker'}
   .modal-footer
     = f.submit 'Save', class: 'btn btn-primary'

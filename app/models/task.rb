@@ -1,9 +1,12 @@
 class Task < ApplicationRecord
   belongs_to :user
+  belongs_to :project
 
   validates_presence_of :title
   validate :future_completed_date
   validates_presence_of :user
+  
+  enum status: [:created, :in_progress, :done]
 
   private
 

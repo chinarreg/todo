@@ -6,7 +6,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user = current_user
+    # @task.user = current_user
     authorize! :create, @task
     save_task
   end
@@ -43,6 +43,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :note, :completed)
+    params.require(:task).permit(:title, :note, :completed, :status, :project_id)
   end
 end

@@ -3,7 +3,11 @@ class Ability
 
   def initialize(user)
     can :manage, Task, user_id: user.id
-
+    if user.admin?
+      can :manage, Project
+    else
+      can :read, Project
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
